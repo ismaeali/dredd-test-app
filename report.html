@@ -1,0 +1,478 @@
+<h1>Dredd Tests</h1>
+<h2>Fail: GET /</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: GET
+uri: /
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+
+body: 
+
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;officia occaecat nulla Ut&quot;,
+      &quot;templated&quot;: false
+    },
+    &quot;gists&quot;: {
+      &quot;href&quot;: &quot;amet Lorem irure&quot;,
+      &quot;templated&quot;: false
+    }
+  }
+}
+statusCode: 200
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]},&quot;gists&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;,&quot;gists&quot;]}},&quot;required&quot;:[&quot;_links&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 200
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/&gt;;rel=&quot;self&quot;,&lt;http://api.example.com/gists&gt;;rel=&quot;gists&quot;
+    content-length: 137
+    etag: W/&quot;89-TEoMOpkBn6Op16w2+apkIQ&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/&quot;
+    },
+    &quot;gists&quot;: {
+      &quot;href&quot;: &quot;/gists?{since}&quot;,
+      &quot;templated&quot;: true
+    }
+  }
+}
+
+</code></pre>
+<h2>Fail: GET /gists/42</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: GET
+uri: /gists/42
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+
+body: 
+
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;created_at&quot;: &quot;exercitation nisi&quot;,
+  &quot;description&quot;: &quot;eu quis ullamco nisi&quot;,
+  &quot;content&quot;: &quot;non dolor magna ullamco&quot;,
+  &quot;id&quot;: &quot;labore&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;nulla non Excepteur&quot;
+    }
+  }
+}
+statusCode: 200
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;created_at&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;description&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;content&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;id&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]},&quot;star&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]}},&quot;required&quot;:[&quot;created_at&quot;,&quot;description&quot;,&quot;content&quot;,&quot;id&quot;,&quot;_links&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 200
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/gists/42&gt;;rel=&quot;self&quot;, &lt;http://api.example.com/gists/42/star&gt;;rel=&quot;star&quot;
+    content-length: 257
+    etag: W/&quot;101-8rD3YA+MCDOSfpb6laxD6Q&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;created_at&quot;: &quot;2017-02-21T21:47:20.584Z&quot;,
+  &quot;description&quot;: &quot;Gist description...&quot;,
+  &quot;content&quot;: &quot;String content...&quot;,
+  &quot;id&quot;: &quot;42&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/gists/#{id}&quot;
+    },
+    &quot;star&quot;: {
+      &quot;href&quot;: &quot;/gists/#{id}/star&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2>Pass: DELETE /gists/42</h2>
+<h2>Fail: PATCH /gists/42</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: PATCH
+uri: /gists/42
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+    Content-Length: 40
+
+body: 
+{
+  &quot;content&quot;: &quot;eu aliquip minim enim&quot;
+}
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;created_at&quot;: &quot;adipisicing sunt veniam&quot;,
+  &quot;description&quot;: &quot;e&quot;,
+  &quot;content&quot;: &quot;adipisicing laborum&quot;,
+  &quot;id&quot;: &quot;enim qui anim labore&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;consequat&quot;,
+      &quot;templated&quot;: true
+    },
+    &quot;star&quot;: {
+      &quot;href&quot;: &quot;aliquip&quot;
+    }
+  }
+}
+statusCode: 200
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;created_at&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;description&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;content&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;id&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]},&quot;star&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]}},&quot;required&quot;:[&quot;created_at&quot;,&quot;description&quot;,&quot;content&quot;,&quot;id&quot;,&quot;_links&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 200
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/gists/42&gt;;rel=&quot;self&quot;, &lt;http://api.example.com/gists/42/star&gt;;rel=&quot;star&quot;
+    content-length: 261
+    etag: W/&quot;105-+gWgiBkrdbIO+Orfnti2UQ&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;created_at&quot;: &quot;2017-02-21T21:47:20.584Z&quot;,
+  &quot;description&quot;: &quot;Gist description...&quot;,
+  &quot;content&quot;: &quot;eu aliquip minim enim&quot;,
+  &quot;id&quot;: &quot;42&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/gists/#{id}&quot;
+    },
+    &quot;star&quot;: {
+      &quot;href&quot;: &quot;/gists/#{id}/star&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2>Fail: GET /gists</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: GET
+uri: /gists
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+
+body: 
+
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;qui&quot;,
+      &quot;templated&quot;: true
+    }
+  },
+  &quot;_embedded&quot;: {
+    &quot;gists&quot;: [
+      {
+        &quot;created_at&quot;: &quot;deserunt Excepteur sit nulla dolor&quot;,
+        &quot;description&quot;: &quot;commodo tempor&quot;,
+        &quot;content&quot;: &quot;minim consequat deserunt ad eiusmod&quot;,
+        &quot;id&quot;: &quot;qui dolore&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;anim laboris &quot;,
+            &quot;templated&quot;: false
+          },
+          &quot;star&quot;: {
+            &quot;href&quot;: &quot;ad aute minim eu in&quot;,
+            &quot;templated&quot;: true
+          }
+        }
+      },
+      {
+        &quot;created_at&quot;: &quot;incididunt Ut&quot;,
+        &quot;description&quot;: &quot;nisi esse&quot;,
+        &quot;content&quot;: &quot;enim esse aute labore in&quot;,
+        &quot;id&quot;: &quot;adipisicing Ut&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;officia aliquip ut ut&quot;,
+            &quot;templated&quot;: false
+          },
+          &quot;star&quot;: {
+            &quot;href&quot;: &quot;non Duis&quot;
+          }
+        }
+      },
+      {
+        &quot;created_at&quot;: &quot;quis labore qui&quot;,
+        &quot;description&quot;: &quot;in ea labore&quot;,
+        &quot;content&quot;: &quot;sunt sed dolore&quot;,
+        &quot;id&quot;: &quot;laboris Duis commodo proident&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;nulla&quot;
+          }
+        }
+      },
+      {
+        &quot;created_at&quot;: &quot;pariatur aliquip&quot;,
+        &quot;description&quot;: &quot;ve&quot;,
+        &quot;content&quot;: &quot;in&quot;,
+        &quot;id&quot;: &quot;est quis do irure Du&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;nostrud occaecat sunt voluptate dolor&quot;,
+            &quot;templated&quot;: true
+          }
+        }
+      },
+      {
+        &quot;created_at&quot;: &quot;nulla nostrud pariatur&quot;,
+        &quot;description&quot;: &quot;aliquip culpa&quot;,
+        &quot;content&quot;: &quot;aute aliquip ex&quot;,
+        &quot;id&quot;: &quot;ex sit&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;Duis exercitation&quot;,
+            &quot;templated&quot;: true
+          },
+          &quot;star&quot;: {
+            &quot;href&quot;: &quot;laborum Excepteur&quot;,
+            &quot;templated&quot;: false
+          }
+        }
+      }
+    ]
+  },
+  &quot;total&quot;: -30249181
+}
+statusCode: 200
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]},&quot;_embedded&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;gists&quot;:{&quot;type&quot;:&quot;array&quot;,&quot;items&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;created_at&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;description&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;content&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;id&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]},&quot;star&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]}},&quot;required&quot;:[&quot;created_at&quot;,&quot;description&quot;,&quot;content&quot;,&quot;id&quot;,&quot;_links&quot;]}}}},&quot;total&quot;:{&quot;type&quot;:&quot;number&quot;}},&quot;required&quot;:[&quot;_links&quot;,&quot;_embedded&quot;,&quot;total&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 200
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/gists&gt;;rel=&quot;self&quot;
+    content-length: 387
+    etag: W/&quot;183-dFKps22ATgYz9IlLW5MpbA&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/gists&quot;
+    }
+  },
+  &quot;_embedded&quot;: {
+    &quot;gists&quot;: [
+      {
+        &quot;created_at&quot;: &quot;2017-02-21T21:47:20.584Z&quot;,
+        &quot;description&quot;: &quot;Gist description...&quot;,
+        &quot;content&quot;: &quot;String content...&quot;,
+        &quot;id&quot;: &quot;42&quot;,
+        &quot;_links&quot;: {
+          &quot;self&quot;: {
+            &quot;href&quot;: &quot;/gists/42&quot;
+          }
+        }
+      }
+    ]
+  },
+  &quot;total&quot;: 1
+}
+
+</code></pre>
+<h2>Fail: POST /gists</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: POST
+uri: /gists
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+    Content-Length: 72
+
+body: 
+{
+  &quot;description&quot;: &quot;Duis sint incididunt&quot;,
+  &quot;content&quot;: &quot;dolore velit&quot;
+}
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;created_at&quot;: &quot;eiusmod&quot;,
+  &quot;description&quot;: &quot;ea consectetur anim sit velit&quot;,
+  &quot;content&quot;: &quot;nisi&quot;,
+  &quot;id&quot;: &quot;velit Ut voluptate eiusmod&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;occaecat do sit&quot;
+    }
+  }
+}
+statusCode: 201
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;created_at&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;description&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;content&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;id&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]},&quot;star&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]}},&quot;required&quot;:[&quot;created_at&quot;,&quot;description&quot;,&quot;content&quot;,&quot;id&quot;,&quot;_links&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 201
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/gists/58acb56822fd4f292b719dd4&gt;;rel=&quot;self&quot;, &lt;http://api.example.com/gists/58acb56822fd4f292b719dd4/star&gt;;rel=&quot;star&quot;
+    content-length: 313
+    etag: W/&quot;139-HFFxRKVqSxqGBx3oowJd2g&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;description&quot;: &quot;Duis sint incididunt&quot;,
+  &quot;content&quot;: &quot;dolore velit&quot;,
+  &quot;created_at&quot;: &quot;2017-02-21T21:47:20.809Z&quot;,
+  &quot;id&quot;: &quot;58acb56822fd4f292b719dd4&quot;,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/gists/58acb56822fd4f292b719dd4&quot;
+    },
+    &quot;star&quot;: {
+      &quot;href&quot;: &quot;/gists/58acb56822fd4f292b719dd4/star&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2>Fail: GET /gists/42/star</h2>
+<h3>Message</h3>
+<pre><code>headers: Header 'content-type' has value 'application/json' instead of 'application/hal+json'
+
+</code></pre>
+<h3>Request</h3>
+<pre><code>method: GET
+uri: /gists/42/star
+headers: 
+    Content-Type: application/json
+    Accept: application/hal+json
+    User-Agent: Dredd/2.2.5 (Darwin 15.4.0; x64)
+
+body: 
+
+
+</code></pre>
+<h3>Expected</h3>
+<pre><code>headers: 
+    Content-Type: application/hal+json
+
+body: 
+{
+  &quot;gist_id&quot;: &quot;enim Excepteur laborum commodo proident&quot;,
+  &quot;starred&quot;: false,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;laborum&quot;,
+      &quot;templated&quot;: true
+    }
+  }
+}
+statusCode: 200
+bodySchema: {&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;gist_id&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;starred&quot;:{&quot;type&quot;:&quot;boolean&quot;},&quot;_links&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;self&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;href&quot;:{&quot;type&quot;:&quot;string&quot;},&quot;templated&quot;:{&quot;type&quot;:&quot;boolean&quot;}},&quot;required&quot;:[&quot;href&quot;]}},&quot;required&quot;:[&quot;self&quot;]}},&quot;required&quot;:[&quot;gist_id&quot;,&quot;starred&quot;,&quot;_links&quot;]}
+
+</code></pre>
+<h3>Actual</h3>
+<pre><code>statusCode: 200
+headers: 
+    x-powered-by: Express
+    content-type: application/json
+    link: &lt;http://api.example.com/gists/#{id}/star&gt;;rel=&quot;self&quot;
+    content-length: 117
+    etag: W/&quot;75-8iQCBbo0COlgdhGD5no9AQ&quot;
+    date: Tue, 21 Feb 2017 21:47:20 GMT
+    connection: close
+
+body: 
+{
+  &quot;gist_id&quot;: &quot;42&quot;,
+  &quot;starred&quot;: true,
+  &quot;_links&quot;: {
+    &quot;self&quot;: {
+      &quot;href&quot;: &quot;/gists/undefined/star&quot;
+    }
+  }
+}
+
+</code></pre>
+<h2>Pass: PUT /gists/42/star</h2>
+<h2>Pass: DELETE /gists/42/star</h2>
