@@ -1,5 +1,5 @@
 dry-run: null
-hookfiles: ./swagger/hooks.js
+hookfiles: null
 language: nodejs
 sandbox: false
 server: npm start
